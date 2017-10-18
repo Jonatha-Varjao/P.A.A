@@ -1,13 +1,23 @@
-#include "ordering.c"
+#include "ordering.h"
+
 
 
 int main()
 {
-    int vector[1000000];    
+    struct timeval stop, start;
+    gettimeofday(&start, NULL);
+    int vetor[100], qtdTrocas=0;
+    vectorDecrescente(vetor,10);
+    printVector(vetor,10);
+  
+    gettimeofday(&start, NULL);
+    sort_insertion(vetor, type_cmp);
+    gettimeofday(&stop, NULL);
     
-    vectorDecrescente(vector,1000000);
+    printVector(vetor,10);
+
+    printf("Clocks:%lu\n", (stop.tv_usec - start.tv_usec) );
+    printf("trocas:%d\n", qtdTrocas);
     
-    quickSort(vector, 0, 999999);
-    printVector(vector, 1000000);
     return 0;
 }
