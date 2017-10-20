@@ -1,47 +1,10 @@
 
-/*FUNCOES AUXILIARES*/
-
-void printVector(int *vector, int size)
-{
-    int i;
-    for (i = 0; i < size; i++)
-        printf("%d ", vector[i]);
-    puts("");
-}
-//PREENCHE UM VETOR DECRESCENTE
-void * vectorDecrescente(int *vector, int size)
-{
-    int i;
-    for (i = 0; i < size; i++)
-    {
-        vector[i] = size - i;
-    }
-    return vector;
-}
-//PREENCHE UM VETOR CRESCENTE
-void * vectorCrescente(int *vector, int size)
-{
-    int i;
-    for (i = 0; i < size; i++)
-    {
-        vector[i] = i + 1;
-    }
-    return vector;
-}
-//FUNÇÃO DE SWAP (TROCA OS VALORES)
-
-void swap(int *a, int *b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
 
 // METODOS DE ORDENACAO
 int quickSort(int *vector, int left, int right)
 {
     int i = left, j = right - 1, x = vector[(left + right) / 2], y;
-    int trocas;
+    int trocas=0;
     while (i <= j)
     {
         while (vector[i] < x && i < right)
@@ -134,8 +97,7 @@ int mergeSort(int *arr, int l, int r)
 
 int insertionSort(int *vector, int size)
 {
-    printf("insertionSort");
-    int i, key, j;
+    int i, key, j,trocas=0;
     for (i = 1; i < size; i++)
     {
         key = vector[i];
@@ -143,10 +105,12 @@ int insertionSort(int *vector, int size)
         while (j >= 0 && vector[j] > key)
         {
             vector[j + 1] = vector[j];
+            trocas++;
             j = j - 1;
         }
         vector[j + 1] = key;
     }
+    return trocas;
 }
 
 int bubbleSort(int *vector, int size)
@@ -181,4 +145,68 @@ int selectionSort(int *vector, int size)
         vector[min] = tmp;
     }
     return trocas;
+}
+
+/*FUNCOES AUXILIARES*/
+int menuSort(int opcao, int *vetor, int tamanho)
+{
+    int trocas = 0;
+    if (opcao == 0)
+    {
+        trocas = quickSort(vetor, 0, tamanho);
+    }
+    else if (opcao == 1)
+    {
+        trocas = insertionSort(vetor, tamanho);
+    }
+    else if (opcao == 2)
+    {
+        trocas = selectionSort(vetor, tamanho);
+    }
+    else if (opcao == 3)
+    {
+        trocas = mergeSort(vetor, 0, tamanho);
+    }
+    else if (opcao == 4)
+    {
+        trocas = bubbleSort(vetor, tamanho);
+    }
+
+    return trocas;
+}
+
+void printVector(int *vector, int size)
+{
+    int i;
+    for (i = 0; i < size; i++)
+        printf("%d ", vector[i]);
+    puts("");
+}
+//PREENCHE UM VETOR DECRESCENTE
+void * vectorDecrescente(int *vector, int size)
+{
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        vector[i] = size - i;
+    }
+    return vector;
+}
+//PREENCHE UM VETOR CRESCENTE
+void * vectorCrescente(int *vector, int size)
+{
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        vector[i] = i + 1;
+    }
+    return vector;
+}
+//FUNÇÃO DE SWAP (TROCA OS VALORES)
+
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }

@@ -7,8 +7,13 @@
 #include <sys/time.h>
 #include <stdint.h>
 #include "ordering.c"
+#include <string.h>
+#include <math.h>
+
+
 
 //FUNCOES AUXILIARES
+int menuSort                (int opcao, int *vetor, int tamanho);
 void printVector            (int *vector,int size);
 void swap                   (int * a, int * b);
 void * vectorDecrescente    (int *vector, int size);
