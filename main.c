@@ -4,7 +4,7 @@
 int main()
 {
     int Tamanho[] = {10000, 100000, 250000, 500000, 750000, 1000000}, i, j;
-    char *Arquivos[] = {"vectorsTime/decrescente/quick.txt", "vectorsTime/decrescente/insertion.txt", "vectorsTime/decrescente/selection.txt", "vectorsTime/decrescente/merge.txt", "vectorsTime/decrescente/bubble.txt"};
+    char *Arquivos[] = {"vectorsTime/random/quick.txt", "vectorsTime/random/insertion.txt", "vectorsTime/random/selection.txt", "vectorsTime/random/merge.txt", "vectorsTime/random/bubble.txt"};
     struct timeval stop, start;
     clock_t inicio;
     double tempo;
@@ -20,6 +20,7 @@ int main()
         for(i = 0 ; i < 6 ; i++)
         {
             vectorDecrescente(vetor, Tamanho[i]);
+            shuffle(vetor, Tamanho[i]);
             inicio = clock();
             gettimeofday(&start, NULL);
             qtdTrocas = menuSort(j, vetor, Tamanho[i]);

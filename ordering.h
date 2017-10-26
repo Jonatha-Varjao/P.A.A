@@ -14,6 +14,7 @@
 
 //FUNCOES AUXILIARES
 int menuSort                (int opcao, int *vetor, int tamanho);
+void shuffle                (int *vector, size_t size);
 void printVector            (int *vector,int size);
 void swap                   (int * a, int * b);
 void * vectorDecrescente    (int *vector, int size);
