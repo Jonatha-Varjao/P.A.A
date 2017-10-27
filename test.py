@@ -1,19 +1,39 @@
-import matplotlib
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 from pylab import genfromtxt 
-from scipy.interpolate import spline
+#from scipy.interpolate import spline
+import os
 
 if __name__ == "__main__":
-    caminhos = ["","","",""]
+    caminhos    = ["vectorsTime/crescente/","vectorsTime/decrescente/","vectorsTime/random/"]
+    txts        = ["bubble.txt","insertion.txt","merge.txt","quick.txt","selection.txt"]
+    
+    
+    matCrescente    = np.genfromtxt(caminhos[0]+txts[4])
+    matDecrescente  = np.genfromtxt(caminhos[1]+txts[4])
+    matRandom       = np.genfromtxt(caminhos[2]+txts[4])       
 
-    mat0 = np.genfromtxt("vectorsTime/crescente/quick.txt")
-    mat1 = np.genfromtxt("vectorsTime/decrescente/quick.txt")
+    plt.plot( matCrescente[:,0],matCrescente[:,1],       label = "Crescente")
+    plt.plot( matDecrescente[:,0],matDecrescente[:,1],   label = "Decrescente")
+    plt.plot( matRandom[:,0],matRandom[:,1],             label = "Random")
     
-    print mat1[:,1]
-    print mat0[:,1]
+    plt.title(txts[4].split(".")[0])
+    plt.xlabel('tamanho')
+    plt.ylabel('tempo(clocks)')
+    plt.legend()
+    plt.grid(True)
+    plt.savefig("graphData/"+txts[4].split(".")[0]+".jpg")
+            
+
+
+    #mat0 = np.genfromtxt(caminhos[0])
+    #mat1 = np.genfromtxt("vectorsTime/decrescente/quick.txt")
     
-    #mat3 = genfromtxt("vectorsTime/random/quick.txt")
+    #print mat1[:,1]
+    #print mat0[:,1]
+    
+    '''
+    mat3 = genfromtxt("vectorsTime/random/quick.txt")
             
     pyplot.title('QuickSort')
     
@@ -29,4 +49,4 @@ if __name__ == "__main__":
     pyplot.grid(True)
     pyplot.legend()
     pyplot.savefig("graphData/quick.jpg")
-
+    '''
